@@ -6,10 +6,6 @@
 
 using namespace std;
 
-//string getNextDigit(string value){
-//    return value.substr(0, 1);
-//}
-
 int solution(int n){
 
     int longestBinaryGap = 0;
