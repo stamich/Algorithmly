@@ -9,4 +9,5 @@ add_executable(algorithmly
         03-time_complexity/FrogJump.cpp 03-time_complexity/PermMissingElem.cpp 03-time_complexity/TapeEquilibrium.cpp
         04-counting_elements/PermCheck.cpp 04-counting_elements/FrogRiverOne.cpp 04-counting_elements/MaxCounters.cpp 04-counting_elements/MissingInteger.cpp
         05-prefix_sums/CountDiv.cpp 05-prefix_sums/PassingCars.cpp 05-prefix_sums/GenomicRangeQuery.cpp 05-prefix_sums/MinAvgTwoSlice.cpp
-        06-sorting/Distinct.cpp 06-sorting/MaxProductOfThree.cpp 06-sorting/Triangle.cpp 06-sorting/NumberOfDiscIntersections.cpp)
+        06-sorting/Distinct.cpp 06-sorting/MaxProductOfThree.cpp 06-sorting/Triangle.cpp 06-sorting/NumberOfDiscIntersections.cpp
+        07-stacks_and_queues/Brackets.cpp 07-stacks_and_queues/Fish.cpp 07-stacks_and_queues/Nesting.cpp 07-stacks_and_queues/StoneWall.cpp)
