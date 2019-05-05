@@ -14,4 +14,10 @@ add_executable(algorithmly
         08-leader/Dominator.cpp 08-leader/EquiLeader.cpp
         09-maximum_slice_problem/MaxProfit.cpp 09-maximum_slice_problem/MaxSliceSum.cpp 09-maximum_slice_problem/MaxDoubleSliceSum.cpp
         10-prime_and_composite/CountFactors.cpp 10-prime_and_composite/MinPerimeterRectangle.cpp 10-prime_and_composite/Peaks.cpp 10-prime_and_composite/Flags.cpp
-        11-sieve_of_erathostenes/CountSemiprimes.cpp 11-sieve_of_erathostenes/CountNonDivisible.cpp)
+        11-sieve_of_erathostenes/CountSemiprimes.cpp 11-sieve_of_erathostenes/CountNonDivisible.cpp
+        12-euclidean_algorithm/ChocolatesByNumbers.cpp 12-euclidean_algorithm/CommonPrimeDivisors.cpp
+        13-fibonacci_numbers/Ladder.cpp 13-fibonacci_numbers/FibFrog.cpp
+        14-binary_search/MinMaxDivision.cpp 14-binary_search/NailingPlanks.cpp
+        15-caterpillar_method/CountDistinctSlices.cpp 15-caterpillar_method/CountTriangles.cpp 15-caterpillar_method/AbsDistinct.cpp 15-caterpillar_method/MinAbsSumOfTwo.cpp
+        16-greedy_algorithms/TieRopes.cpp 16-greedy_algorithms/MaxNonOverlappingSegments.cpp
+        17-dynamic_programming/NumberSolitaire.cpp 17-dynamic_programming/MinAbsSum.cpp)

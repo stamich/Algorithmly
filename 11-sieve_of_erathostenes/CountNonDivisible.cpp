@@ -51,7 +51,7 @@ vector<int> solution(vector<int> &A) {
 vector<int> solution2(vector<int> &A) {
 
     int N = A.size();
-    vector<int> counts (*std::max_element(A.begin(), A.end()) + 1,0);
+    vector<int> counts (*max_element(A.begin(), A.end()) + 1,0);
 
     // Calculate occurences of each number in the array
     for (int i = 0; i < N; ++i)
@@ -59,7 +59,7 @@ vector<int> solution2(vector<int> &A) {
         counts[A[i]] += 1;
     }
 
-    std::vector<int> answer(N,0);
+    vector<int> answer(N,0);
 
     // For each element of the array
     for (int i = 0; i < N; ++i)
