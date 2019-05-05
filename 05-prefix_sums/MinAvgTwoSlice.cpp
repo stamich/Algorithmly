@@ -40,4 +40,5 @@ int solution(vector<int> &A) {
 int main(){
     vector<int> A = {4,2,2,5,1,5,8};
     cout << "Number of Passes: " << solution(A) << endl;
+    return 0;
 }

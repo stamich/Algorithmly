@@ -16,4 +16,5 @@ int solution(vector<int> &A) {
 int main(){
     vector<int> A = {2,3,1,5};
     cout << solution(A) << endl;
+    return 0;
 }

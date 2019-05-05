@@ -103,4 +103,5 @@ int main(){
     }
     cout << "The number of intersecting pairs exceeds 10,000,000." << endl;
 
+    return 0;
 }

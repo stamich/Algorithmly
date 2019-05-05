@@ -31,4 +31,5 @@ int solution(vector<int> &A) {
 int main(){
     vector<int> A = {3,1,2,4,3};
     cout << solution(A) << endl;
+    return 0;
 }

@@ -33,6 +33,5 @@ int solution(int n){
 
 int main(){
     cout << solution(1041) << endl;
-
     return 0;
 }

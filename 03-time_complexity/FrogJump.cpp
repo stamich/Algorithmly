@@ -15,4 +15,5 @@ int main(){
     int Y = 85;
     int D = 30;
     cout << "Frog needs: " << solution(X, Y, D) << " jumps." << endl;
+    return 0;
 }

@@ -7,18 +7,14 @@
 
 using namespace std;
 
-//int solution(string &S) {
-//    // write your code in C++14 (g++ 6.2.0)
-//}
-
-int solution(string& input)
+int solution(string &S)
 {
-    if(input.size() % 2) // 1 An odd numbers of brackets implies bad nesting.
+    if(S.size() % 2) // 1 An odd numbers of brackets implies bad nesting.
         return 0;
 
     stack<char> buffer; // 2 I am going to push on a stack all the open brackets, popping them as soon as a close one is found.
 
-    for(auto it = input.begin(); it != input.end(); ++it) // 3 Loop on all the input elements.
+    for(auto it = S.begin(); it != S.end(); ++it) // 3 Loop on all the input elements.
     {
         switch(*it) // 4 If the current character is an open bracket, in any supported flavor, push it on the stack.
         {
@@ -49,4 +45,12 @@ int main(){
     } else {
         cout << "String is not nested." << endl;
     }
+
+    if (solution(S1)){
+        cout << "String nested properly." << endl;
+    } else {
+        cout << "String is not nested." << endl;
+    }
+
+    return 0;
 }

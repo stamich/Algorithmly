@@ -58,3 +58,13 @@ vector<int> solution(string &S, vector<int> &P, vector<int> &Q) {
 
     return *results;
 }
+
+int main(){
+
+    string S = " ";
+    vector<int> P = {};
+    vector<int> Q = {};
+
+
+    return 0;
+}

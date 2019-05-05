@@ -27,4 +27,5 @@ int main()
 {
     vector<int> A = {0,1,0,1,1};
     cout << "Number of Passes: " << solution(A) << endl;
+    return 0;
 }

@@ -61,4 +61,5 @@ int solutionTwo(vector<int> &A){
 int main(){
     vector<int> A = {4,1,3,2};
     cout << solution(A) << endl;
+    return 0;
 }

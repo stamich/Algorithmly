@@ -34,7 +34,7 @@ int solution(string &S) {
         }
 
         if (mm.empty() == 0){
-            return 1;
+            return 0;
         }
 
         c = mm.top();
@@ -53,4 +53,5 @@ int main(){
 
     string s = "AAA";
     solution(s);
+    return 0;
 }

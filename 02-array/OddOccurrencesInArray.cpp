@@ -19,4 +19,5 @@ int solution(vector<int> &A) {
 int main(){
     vector<int> A = {9,3,9,3,9,7,9};
     cout << solution(A) << endl;
+    return 0;
 }

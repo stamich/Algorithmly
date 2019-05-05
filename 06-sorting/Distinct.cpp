@@ -34,4 +34,5 @@ int main()
 {
     vector<int> A = {2,1,1,2,3,1};
     cout << "Distinct: " << solution(A) << endl;
+    return 0;
 }

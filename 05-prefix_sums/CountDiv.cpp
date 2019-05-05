@@ -16,4 +16,5 @@ int main(){
     cout << solution(6,11,2) << endl;
     cout << solution(6,11,3) << endl;
     cout << solution(6,11,4) << endl;
+    return 0;
 }

@@ -45,4 +45,9 @@ int solution(vector<int> &A, vector<int> &B) {
 
 int main(){
 
+    vector<int> A = {};
+    vector<int> B = {};
+
+    cout << solution(A, B) << endl;
+    return 0;
 }

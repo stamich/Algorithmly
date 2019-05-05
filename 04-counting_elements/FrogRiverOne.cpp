@@ -32,4 +32,5 @@ int main(){
     vector<int> A = {1,3,1,4,2,3,5,4};
 
     cout << solution(X, A) << endl;
+    return 0;
 }

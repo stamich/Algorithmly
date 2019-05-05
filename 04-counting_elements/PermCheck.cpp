@@ -24,4 +24,5 @@ int main(){
     cout << solution(A) << endl;
     cout << solution(B) << endl;
     cout << solution(C) << endl;
+    return 0;
 }

@@ -15,7 +15,6 @@ int solution(vector<int> &A){
         if((long)A[i-2] + (long)A[i-1] > (long)A[i]) // note: using "long" for overflow cases
             return 1;
     }
-
     return 0;
 }
 
@@ -33,4 +32,6 @@ int main(){
 //        cout << endl;
     }
     cout << "Triplet for array: " << " not exists." << endl;
+
+    return 0;
 }

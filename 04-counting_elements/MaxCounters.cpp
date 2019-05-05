@@ -45,4 +45,5 @@ int main(){
         cout << item << " ";
     }
     cout << endl;
+    return 0;
 }
