@@ -20,4 +20,5 @@ add_executable(algorithmly
         14-binary_search/MinMaxDivision.cpp 14-binary_search/NailingPlanks.cpp
         15-caterpillar_method/CountDistinctSlices.cpp 15-caterpillar_method/CountTriangles.cpp 15-caterpillar_method/AbsDistinct.cpp 15-caterpillar_method/MinAbsSumOfTwo.cpp
         16-greedy_algorithms/TieRopes.cpp 16-greedy_algorithms/MaxNonOverlappingSegments.cpp
-        17-dynamic_programming/NumberSolitaire.cpp 17-dynamic_programming/MinAbsSum.cpp)
+        17-dynamic_programming/NumberSolitaire.cpp 17-dynamic_programming/MinAbsSum.cpp
+        90-2015_challenge/LongestPassword.cpp)
