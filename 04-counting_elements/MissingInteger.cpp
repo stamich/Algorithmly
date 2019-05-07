@@ -54,7 +54,6 @@ int solution2(vector<int> &A){
             if (A[i + 1] > 1){
                 return 1;
             }
-
             continue;
         }
 
@@ -62,7 +61,6 @@ int solution2(vector<int> &A){
             return (A[i] + 1);
         }
     }
-
     return A[N-1] + 1;
 }
 
@@ -71,6 +69,5 @@ int main(){
 
     cout << "The smallest positive integer (greater than 0) that does not occur in array is: " << solution(A) << endl;
     cout << "The smallest positive integer (greater than 0) that does not occur in array is: " << solution2(A) << endl;
-
     return 0;
 }
