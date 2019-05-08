@@ -20,7 +20,8 @@ set(ALGORITHMLY
         15-caterpillar_method
         16-greedy_algorithms
         17-dynamic_programming
-        90-2015_challenge)
+        90-2015_challenge
+        )
 
 foreach(_dir IN ITEMS ${ALGORITHMLY})
     file(GLOB _files "${_dir}/*.cpp")
@@ -28,9 +29,7 @@ foreach(_dir IN ITEMS ${ALGORITHMLY})
 
     foreach(_file IN ITEMS ${_files})
 
-        get_filename_component(_file_name
-                ${_file} NAME
-                )
+        get_filename_component(_file_name ${_file} NAME)
 
         set(_project_name "${_file_name}")
         message(STATUS "  ${_dir}/${_file_name} is going to be built")

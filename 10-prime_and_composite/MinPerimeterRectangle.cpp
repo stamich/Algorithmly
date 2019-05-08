@@ -10,18 +10,15 @@ int solution(int N) {
 
     int i = 1;
     int A = 1;
-
     while (i * i < N) {
         if (N % i == 0) {
             A = i;
         }
         i++;
     }
-
     if (i * i == N) {
         A = i;
     }
-
     return (A + (N / A)) * 2;
 }
 
@@ -42,4 +39,12 @@ int solution2(int N){
     }
 
     return perimeter;
+}
+
+int main(void){
+
+    int N = 30;
+    cout << "The minimal perimeter is: " << solution(N) << endl;
+    cout << "The minimal perimeter is: " << solution2(N) << endl;
+    return 0;
 }

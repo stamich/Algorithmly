@@ -1,8 +1,10 @@
 //
 // Created by michal on 04.05.19.
 //
+// N voracious fish are moving along a river. Calculate how many fish are alive.
 #include <iostream>
 #include <vector>
+#include <stack>
 
 using namespace std;
 
@@ -39,15 +41,41 @@ int solution(vector<int> &A, vector<int> &B) {
             }
         }
     }
-
     return survivors;
+}
+
+int solution2(vector<int> &A, vector<int> &B) {
+    stack<int> st;
+    int eaten = 0;
+    for(size_t i = 0; i < A.size(); i ++) {
+        if(B[i] == 1)
+            st.push(A[i]);
+        else {
+            while(!st.empty()) {
+                if(A[i] > st.top()) {
+                    st.pop();
+                    // The fish going upstream is bigger
+                    // and it eats another one
+                    eaten ++;
+                } else
+                    break;
+            }
+            if(!st.empty())
+                // The fish going downstream is bigger
+                // and it eats another one
+                eaten ++;
+        }
+    }
+    return (A.size() - eaten);
 }
 
 int main(){
 
-    vector<int> A = {};
-    vector<int> B = {};
+    vector<int> A = {4,3,2,1,5};
+    vector<int> B = {0,1,0,0,0};
 
-    cout << solution(A, B) << endl;
+    cout << solution(A, B) << " fish will stay alive." << endl;
+    cout << solution2(A, B) << " fish will stay alive." << endl;
+
     return 0;
 }

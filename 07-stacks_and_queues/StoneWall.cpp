@@ -1,8 +1,10 @@
 //
 // Created by michal on 04.05.19.
 //
+// Cover "Manhattan skyline" using the minimum number of rectangles.
 #include <iostream>
 #include <vector>
+#include <stack>
 
 using namespace std;
 
@@ -26,9 +28,31 @@ int solution(vector<int> &H) {
     return result;
 }
 
+int solution2(vector<int> &H){
+    stack<int> stack;
+    int count = 0;
+    for(size_t i = 0; i < H.size(); i ++){
+        if(stack.empty()){
+            stack.push(H[i]);
+            count++;
+        }
+        else {
+            while(!stack.empty() && (stack.top() > H[i]))
+                stack.pop();
+            if(stack.empty() || (stack.top() != H[i])) {
+                stack.push(H[i]);
+                count++;
+            }
+        }
+    }
+    return count;
+}
+
 int main(){
     vector<int> H = {8,8,5,7,9,8,7,4,8};
 
     cout << "Minimum number of blocks: " << solution(H) << endl;
+    cout << "Minimum number of blocks: " << solution2(H) << endl;
+
     return 0;
 }

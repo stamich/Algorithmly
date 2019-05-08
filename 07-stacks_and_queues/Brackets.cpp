@@ -1,6 +1,7 @@
 //
 // Created by michal on 04.05.19.
 //
+// Determine whether a given string of parentheses is properly nested
 #include <iostream>
 #include <string>
 #include <stack>
@@ -34,6 +35,45 @@ int solution(string &S)
     }
 
     return buffer.empty() ? 1 : 0; // 7 After checking all the elements, we return success only if no open bracket is still lingering in the stack.
+}
+
+int solution2(string &S) {
+    if(S.empty())
+        return 1;
+    stack<char> st;
+    st.push(S[0]);
+    for(size_t i = 1; i < S.length(); i ++) {
+        const char ch = S[i];
+        switch(ch) {
+            case '{':
+                st.push('{');
+                break;
+            case '}':
+                if(st.empty() || (st.top() != '{'))
+                    return 0;
+                st.pop();
+                break;
+            case '(':
+                st.push('(');
+                break;
+            case ')':
+                if(st.empty() || (st.top() != '('))
+                    return 0;
+                st.pop();
+                break;
+            case '[':
+                st.push('[');
+                break;
+            case ']':
+                if(st.empty() || (st.top() != '['))
+                    return 0;
+                st.pop();
+                break;
+            default:
+                return 0;
+        }
+    }
+    return st.empty();
 }
 
 int main(){

@@ -1,12 +1,45 @@
 //
 // Created by michal on 05.05.19.
 //
+// Find the maximum number of flags that can be set on mountain peaks.
 #include <iostream>
 #include <vector>
 
 using namespace std;
 
-int solution(vector<int> &A) {
+int solution(vector<int> &a) {
+
+    if(a.size() < 3) return 0;
+    vector<int> peaks(a.size());
+    int lastPeak = -1;
+    peaks.back() = lastPeak;
+
+    for(auto i = ++a.rbegin();i != --a.rend();i++){
+
+        int index = a.size() - (i - a.rbegin()) - 1;
+        if(*i > *(i - 1) && *i > *(i + 1))
+            lastPeak = index;
+        peaks[index] = lastPeak;
+    }
+
+    peaks.front() = lastPeak;
+    int maxFlags = 0;
+
+    for(int i = 1;i*i <= a.size() + i;i++){
+        int nextPeak = peaks[0];
+        int flags = 0;
+        for(int j = 0;j < i && nextPeak != -1;j++, flags++){
+            if(nextPeak + i >= a.size())
+                nextPeak = -1;
+            else
+                nextPeak = peaks[nextPeak + i];
+        }
+        maxFlags = std::max(maxFlags, flags);
+    }
+    return maxFlags;
+}
+
+int solution2(vector<int> &A) {
     if(A.empty())
         return 0;
 
@@ -42,12 +75,8 @@ int solution(vector<int> &A) {
 }
 
 int main(void) {
-    int a[] = {1, 5, 3, 4, 3, 4, 1, 2, 3, 4, 6, 2};
-    vector<int> A(a, a + sizeof(a) / sizeof(a[0]));
-    int r = solution(A);
-    cout << r << endl;
-    if(r != 3)
-        cout << "ERROR" << endl;
-
+    vector<int> A = {1, 5, 3, 4, 3, 4, 1, 2, 3, 4, 6, 2};
+    cout << "Flags: " << solution(A) << endl;
+    cout << "Flags: " << solution2(A) << endl;
     return 0;
 }

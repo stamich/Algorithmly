@@ -1,9 +1,11 @@
 //
 // Created by michal on 05.05.19.
 //
+// Find a maximum sum of a compact subsequence of array elements.
 #include <iostream>
 #include <vector>
 #include <cassert>
+#include <climits>
 
 using namespace std;
 
@@ -39,4 +41,31 @@ int solution(vector<int> &A) {
     assert((result >= MIN_RESULT) && (result <= MAX_RESULT));
 
     return int(result);
+}
+
+int solution2(vector<int> &A) {
+    int max_ending = 0;
+    int max_slice = 0;
+    for(size_t i = 0; i < A.size(); i ++) {
+        max_ending = max(0, max_ending + A[i]);
+        max_slice = max(max_slice, max_ending);
+    }
+
+    if(max_slice != 0){
+        return max_slice;
+    }
+    max_slice = INT_MIN;
+    for(size_t i = 0; i < A.size(); i ++)
+        if(A[i] > max_slice){
+            max_slice = A[i];
+        }
+    return max_slice;
+}
+
+int main(){
+
+    vector<int> A = {3,2,-6,4,0};
+    cout << "Maximum sum of elements: " << solution(A) << endl;
+    cout << "Maximum sum of elements: " << solution2(A) << endl;
+    return 0;
 }
