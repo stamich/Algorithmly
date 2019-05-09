@@ -1,6 +1,7 @@
 //
 // Created by michal on 05.05.19.
 //
+// Check whether two numbers have the same prime divisors.
 #include <iostream>
 #include <cassert>
 #include <vector>
@@ -32,4 +33,17 @@ int solution(vector<int> &A, vector<int> &B){
             ++count;
     }
     return count;
+}
+
+int main(void){
+
+    vector<int> A = {15,10,3};
+    vector<int> B = {75,30,5};
+    if (solution(A,B)){
+        cout << "The pair has the same set of prime divisors." << "(" << solution(A,B) << ")" << endl;
+    } else {
+        cout << "The pair has not the same set of prime divisors." << endl;
+    }
+
+    return 0;
 }

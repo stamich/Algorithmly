@@ -1,6 +1,8 @@
 //
 // Created by michal on 05.05.19.
 //
+// Count the minimum number of jumps required for a frog to get to the
+// other side of a river.
 #include <iostream>
 #include <vector>
 #include <map>
@@ -9,7 +11,45 @@
 #include <climits>
 using namespace std;
 
+#include <set>
+
 int solution(vector<int> &A) {
+    int N = A.size();
+
+    vector<int> fib;
+    fib.push_back(1);
+    fib.push_back(1);
+    while (fib[fib.size() - 1] <= N + 1){
+        fib.push_back(fib[fib.size() - 1] + fib[fib.size() - 2]);
+    }
+
+    set<int> positions;
+    positions.insert(N);
+    for (int j = 1; ; j++){
+        set<int> indexes;
+        for (int i: positions){
+            for (int f: fib){
+
+                int p = i - f;
+                if (p == -1){
+                    return j;
+                }
+                if (p < 0) {
+                    break;
+                }
+                if (A[p]){
+                    indexes.insert(p);
+                }
+            }
+        }
+        if (indexes.size() == 0){
+            return -1;
+        }
+        positions = indexes;
+    }
+}
+
+int solution2(vector<int> &A) {
     const bool logs = false;
 
     const int N = int(A.size());
@@ -128,141 +168,9 @@ int calc_jumps_bf(int start_pos, int N,
     return (min_cnt + 1);
 }
 
-int solution_bf(vector<int> &A) {
-    const bool logs = false;
-
-    const int N = int(A.size());
-    // 1. Prepare array of leafs
-    vector<int> leafs;
-    for(int i = 0; i < N; i ++)
-        if(A[i])
-            leafs.push_back(i);
-    leafs.push_back(N); // opposite bank of the river
-
-    if(logs) {
-        for(size_t i = 0; i < leafs.size(); i ++)
-            cout << leafs[i] << " ";
-        cout << endl;
-    }
-
-    // 2. Prepare Fibonacci numbers, likely applicable for jumping
-    map<int, int> _fibs;
-    _fibs[1] = 1;
-    int fib_1 = 0;
-    int fib_2 = 1;
-    while(true) {
-        const int fib = fib_1 + fib_2;
-        if(fib > (N + 1))
-            break;
-        if(logs)
-            cout << "fib: " << fib << endl;
-        _fibs[fib] = fib;
-        fib_1 = fib_2;
-        fib_2 = fib;
-    }
-
-    // 3. Brute-force recursive algorithm
-    int cnt = calc_jumps_bf(-1, N, _fibs, leafs, 0);
-    if(cnt == INT_MAX)
-        cnt = -1;
-    return cnt;
-}
-
 int main(void) {
-    { // 1
-        int a[] = {0, 0, 0, 1, 1, 0, 1, 0, 0, 0, 0};
-        vector<int> A(a, a + sizeof(a) / sizeof(a[0]));
-        int r = solution(A);
-        cout << r << endl;
-        if(r != 3)
-            cout << "ERROR1" << endl;
-    }
 
-    { // 2
-        //cout << "Test Case 2" << endl;
-        int a[] = {1, 1, 0, 1, 1, 0, 0, 0, 0, 0, 0};
-        vector<int> A(a, a + sizeof(a) / sizeof(a[0]));
-        int r = solution(A);
-        cout << r << endl;
-        if(r != (-1))
-            cout << "ERROR2" << endl;
-        //cout << "Finished" << endl;
-    }
-
-    { // 3
-        //cout << "Test Case 3" << endl;
-        int a[] = {1, 1, 1, 0, 1, 0, 0, 0, 0, 0};
-        vector<int> A(a, a + sizeof(a) / sizeof(a[0]));
-        int r = solution(A);
-        cout << r << endl;
-        if(r != (-1))
-            cout << "ERROR3" << endl;
-        //cout << "Finished" << endl;
-    }
-
-    { // 4
-        //cout << "Test Case 4" << endl;
-        int a[] = {0, 0, 0, 0, 1, 0, 1, 0, 0, 0};
-        vector<int> A(a, a + sizeof(a) / sizeof(a[0]));
-        int r = solution(A);
-        cout << r << endl;
-        if(r != (-1))
-            cout << "ERROR4" << endl;
-        //cout << "Finished" << endl;
-    }
-
-    { // 5
-        //cout << "Test Case 4" << endl;
-        int a[] = {0, 0, 0, 0};
-        vector<int> A(a, a + sizeof(a) / sizeof(a[0]));
-        int r = solution(A);
-        cout << r << endl;
-        if(r != 1)
-            cout << "ERROR5" << endl;
-        //cout << "Finished" << endl;
-    }
-
-    { // 6
-        //cout << "Test Case 6" << endl;
-        int a[] = {0, 0, 0, 1};
-        vector<int> A(a, a + sizeof(a) / sizeof(a[0]));
-        int r = solution(A);
-        cout << r << endl;
-        if(r != 1)
-            cout << "ERROR5" << endl;
-        //cout << "Finished" << endl;
-    }
-
-
-    if(1) { // rnd
-        srand(time(NULL));
-
-        for(int test = 0; test < 10; test ++) {
-            cout << endl << "test: " << test << "..." << endl;
-            const int N = 10;
-            vector<int> A(10, 0);
-            for(int i = 0; i < N; i ++)
-                if(rand() > (RAND_MAX / 2))
-                    A[i] = 1;
-
-            //cout << "started..." << endl;
-            //for(size_t i = 0; i < A.size(); i ++)
-            //	cout << A[i] << ", ";
-            //cout << endl;
-
-            int r1 = solution(A);
-            int r2 = solution_bf(A);
-            if(r1 != r2) {
-                cout << "ERROR_rnd" << endl;
-                for(size_t i = 0; i < A.size(); i ++)
-                    cout << A[i] << ", ";
-                cout << endl;
-                cout << "r1 = " << r1 << endl;
-                cout << "r2 = " << r2 << endl;
-            } else
-                cout << "OK" << endl;
-            //cout << "...finished" << endl;
-        }
-    }
+    vector<int> A = {0,0,0,1,1,0,1,0,0,0,0};
+    cout << "The minimum number of jumps by which the frog can get to the other side of the river: " << solution(A) << endl;
     return 0;
 }
