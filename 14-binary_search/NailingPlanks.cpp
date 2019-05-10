@@ -1,11 +1,106 @@
 //
-// Created by michal on 05.05.19.
+// Created by michal on 04.05.19.
 //
+// Count the minimum number of nails that allow a series of planks to be nailed.
 #include <iostream>
 #include <vector>
 #include <algorithm>
 
+#include <climits>
+
 using namespace std;
+
+int binSearch(vector< pair<int,int> > &CP,int PlankB,int PlankE,int jmin){
+    int b, mid, e, value, resultPos, sjmin, j, CPsize;
+    CPsize = CP.size();
+    b = 0;
+    e = CP.size() - 1;
+    resultPos = -1;
+    // BinSearch for nail>=LeftPlankSide
+    while (b <= e){
+        mid = ( b + e) / 2;
+        value = CP[mid].first;
+        if ( value >= PlankB ){
+            e = mid - 1;
+            resultPos=mid;
+        }else{
+            b = mid + 1;
+        }
+    }
+    if (-1 == resultPos){
+        return -1;
+    }
+    value = CP[resultPos].first;
+    if (value > PlankE){
+        return -1;
+    }
+    // Linear Search for nail <= RightPlankSide
+    // with j<jmin or  smaller j
+    sjmin=INT_MAX;
+    while ( (value <= PlankE) && (resultPos < CPsize) ){
+        j=CP[resultPos].second;
+        if (j <= jmin ){
+            return jmin;
+        }
+        if (j < sjmin ){
+            sjmin = j;
+        }
+        resultPos++;
+        if ( resultPos < CPsize ) value = CP[resultPos].first;
+    }
+    return sjmin;
+}
+int solution(vector<int> &A, vector<int> &B, vector<int> &C){
+    int i, j, n, m, jmin;
+    n = A.size();
+    m = C.size();
+    pair<int,int> p(0,0);
+    vector< pair<int,int> > CP(m,p);
+    for (j = 0; j < m; j++){
+        CP[j].first = C[j];
+        CP[j].second = j;
+    }
+    sort( CP.begin(), CP.end() );
+    jmin = -1;
+    for (i = 0; i < n; i++){
+        jmin = binSearch(CP, A[i], B[i], jmin);
+        if (-1 == jmin) {
+            return -1;
+        }
+    }
+    return jmin + 1;
+}
+/////////////////////////////////////////////////////
+
+bool nailed(vector<int> &A, vector<int> &B, vector <int> &C, int maxNails) {
+    int n = A.size();
+    int m = C.size();
+    vector nailsCounter(m * 2 + 1, 0);
+    for (int i = 0; i < maxNails; ++i){
+        nailsCounter[C[i]] = 1;
+    }
+    int counter = 0;
+    for (auto &v: nailsCounter){
+        counter += v;
+        v = counter;
+    }
+    for (int i = 0; i < n; ++i){
+        if (nailsCounter[A[i] - 1] == nailsCounter[B[i]]) return false;
+    }
+    return true;
+}
+int solution2(vector<int> &A, vector<int> &B, vector <int> &C){
+    int lower = 1, upper = C.size();
+    if (!nailed(A, B, C, upper)) return -1;
+    while (lower < upper){
+        int nails = (lower + upper) / 2;
+        if (nailed(A, B, C, nails)) upper = nails;
+        else lower = nails + 1;
+    }
+    return lower;
+}
+
+/////////////////////////////////////////////////////
 
 bool all_nailed(vector<int> &A, vector<int> &B, vector<int> &C, const int nails) {
 
@@ -21,7 +116,7 @@ bool all_nailed(vector<int> &A, vector<int> &B, vector<int> &C, const int nails)
     return true;
 }
 
-int solution2(vector<int> &A, vector<int> &B, vector<int> &C) {
+int solution3(vector<int> &A, vector<int> &B, vector<int> &C) {
     const int max_nails_cnt = int(C.size());
     int upper_nails_cnt = max_nails_cnt;
     int lower_nails_cnt = 1;
@@ -48,7 +143,7 @@ int solution2(vector<int> &A, vector<int> &B, vector<int> &C) {
 
 bool nails_enough(int j, vector<int> &A, vector<int> &B, vector<int> &C);
 
-int solution(vector<int> &A, vector<int> &B, vector<int> &C) {
+int solution4(vector<int> &A, vector<int> &B, vector<int> &C) {
     int last = (int)C.size();
     int bgn = 0;
     int mid = 0;
