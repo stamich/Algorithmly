@@ -1,6 +1,7 @@
 //
 // Created by michal on 05.05.19.
 //
+// Given array of integers, find the lowest absolute sum of elements.
 #include <iostream>
 #include <vector>
 #include <map>
@@ -10,26 +11,58 @@
 using namespace std;
 
 int solution(vector<int> &A) {
+    if(A.empty()){
+        return 0;
+    }
+
+    map<int, map<int, int> > hyperMap;
+    map<int, int> zeroLevel;
+    zeroLevel[A[0]] = A[0];
+    hyperMap[0] = zeroLevel;
+    for(size_t i = 1; i < A.size(); i ++){
+
+        map<int, int> &prevLevel = hyperMap[i - 1];
+        map<int, int> currentLevel;
+
+        for(map<int, int>::iterator it = prevLevel.begin();
+            it != prevLevel.end(); ++it){
+            currentLevel[it->first + A[i]] = it->first + A[i];
+            currentLevel[it->first - A[i]] = it->first - A[i];
+        }
+        hyperMap[i] = currentLevel;
+    }
+
+    int result = INT_MAX;
+    map<int, int> &lastLevel = hyperMap[int(A.size()) - 1];
+    for(map<int, int>::iterator it = lastLevel.begin();
+        it != lastLevel.end(); ++it) {
+        if(abs(it->second) < result)
+            result = abs(it->second);
+    }
+    return result;
+}
+
+int solution2(vector<int> &A){
     const int N = int(A.size());
 
     int M = 0;
     int S = 0;
-    for(int i = 0; i < N; i ++) {
+    for(int i = 0; i < N; i ++){
         /* Make all values positive (absolute) */
-        if(A[i] < 0)
+        if(A[i] < 0){
             A[i] *= -1;
-
+        }
         /* Find the maximum value in the array */
-        if(A[i] > M)
+        if(A[i] > M){
             M = A[i];
-
+        }
         /* Find the sum of the array */
         S += A[i];
     }
 
     /* Find the values distribution */
     vector<int> count(M + 1, 0);
-    for(int i = 0; i < N; i ++) {
+    for(int i = 0; i < N; i ++){
         count[A[i]] += 1;
     }
 
@@ -38,22 +71,23 @@ int solution(vector<int> &A) {
     dp[0] = 0;
 
     /* Golden solution */
-    for(int a = 1; a <= M; a ++) {
-        if(count[a] <= 0)
+    for(int a = 1; a <= M; a ++){
+        if(count[a] <= 0){
             continue;
-        for(int j = 0; j <= S; j ++) {
+        }
+        for(int j = 0; j <= S; j ++){
             if(dp[j] >= 0) {
                 dp[j] = count[a];
-            } else if((j >= a) && (dp[j - a] > 0)) {
+            } else if((j >= a) && (dp[j - a] > 0)){
                 dp[j] = dp[j - a] - 1;
             }
         }
     }
-
     int result = S;
     for(int i = 0; i < (S / 2 + 1); i ++)
-        if(dp[i] >= 0)
+        if(dp[i] >= 0){
             result = min(result, S - 2 * i);
+        }
     return result;
 }
 
@@ -86,42 +120,11 @@ int solution3(vector<int> &A) {
         if(abs(it->second) < min_sum)
             min_sum = abs(it->second);
     }
-
-    return min_sum;
-}
-
-int solution2(vector<int> &A) {
-    if(A.empty())
-        return 0;
-
-    map<int, map<int, int> > hyper_map;
-    map<int, int> zero_level;
-    zero_level[A[0]] = A[0];
-    hyper_map[0] = zero_level;
-    for(size_t i = 1; i < A.size(); i ++) {
-        map<int, int> &prev_level = hyper_map[i - 1];
-        map<int, int> cur_level;
-        for(map<int, int>::iterator it = prev_level.begin();
-            it != prev_level.end(); ++it) {
-            cur_level[it->first + A[i]] = it->first + A[i];
-            cur_level[it->first - A[i]] = it->first - A[i];
-        }
-        hyper_map[i] = cur_level;
-    }
-
-    int min_sum = INT_MAX;
-    map<int, int> &last_level = hyper_map[int(A.size()) - 1];
-    for(map<int, int>::iterator it = last_level.begin();
-        it != last_level.end(); ++it) {
-        if(abs(it->second) < min_sum)
-            min_sum = abs(it->second);
-    }
-
     return min_sum;
 }
 
 
-int solution2a(vector<int> &A) {
+int solution4(vector<int> &A) {
     if(A.empty())
         return 0;
 
@@ -154,10 +157,9 @@ int solution2a(vector<int> &A) {
             //m[-next_tmp_sum_pos] = level + 1;
             //m[-next_tmp_sum_neg] = level + 1;
 
-            cout << next_tmp_sum_pos << "\t"
-                 << next_tmp_sum_neg << endl;
+            //cout << next_tmp_sum_pos << "\t" << next_tmp_sum_neg << endl;
         }
-        level ++;
+        level++;
     }
 
     int min_sum = INT_MAX;
@@ -170,79 +172,15 @@ int solution2a(vector<int> &A) {
     return min_sum;
 }
 
-int main(void) {
-    { // 0
-        int a[] = {1, -1};
-        vector<int> A(a, a + sizeof(a) / sizeof(a[0]));
-        int r = solution(A);
-        int r2 = solution2(A);
-        int r2a = solution2a(A);
-        cout << r << endl;
-        cout << r2 << endl;
-        if((r != 0) || (r != r2) || (r != r2a))
+int main(void){
 
-            cout << "ERROR0" << endl;
-    }
-
-    { // 1
-        int a[] = {1, 5, 2, -2};
-        vector<int> A(a, a + sizeof(a) / sizeof(a[0]));
-        int r = solution(A);
-        int r2 = solution2(A);
-        int r2a = solution2a(A);
-        cout << r << endl;
-        cout << r2 << endl;
-        if((r != 0) || (r != r2) || (r != r2a))
-            cout << "ERROR1" << endl;
-    }
-
-    { // 2
-        int a[] = {1};
-        vector<int> A(a, a + sizeof(a) / sizeof(a[0]));
-        int r = solution(A);
-        int r2 = solution2(A);
-        int r2a = solution2a(A);
-        cout << r << endl;
-        cout << r2 << endl;
-        if((r != 1) || (r != r2) || (r != r2a))
-            cout << "ERROR2" << endl;
-    }
-
-    { // 3
-        int a[] = {-1};
-        vector<int> A(a, a + sizeof(a) / sizeof(a[0]));
-        int r = solution(A);
-        int r2 = solution2(A);
-        int r2a = solution2a(A);
-        cout << r << endl;
-        cout << r2 << endl;
-        if((r != 1) || (r != r2) || (r != r2a))
-            cout << "ERROR3" << endl;
-    }
-
-    { // 4
-        int a[] = {-3, 3, -3, 0, -2};
-        vector<int> A(a, a + sizeof(a) / sizeof(a[0]));
-        int r = solution(A);
-        int r2 = solution2(A);
-        int r2a = solution2a(A);
-        cout << r << endl;
-        cout << r2 << endl;
-        if((r != 1) || (r != r2) || (r != r2a))
-            cout << "ERROR4" << endl;
-    }
-
-    { // 5
-        int a[] = {-3, 5, -1, -4, -1};
-        vector<int> A(a, a + sizeof(a) / sizeof(a[0]));
-        int r = solution(A);
-        int r2 = solution2(A);
-        int r2a = solution2a(A);
-        cout << r << endl;
-        cout << r2 << endl;
-        if((r != 0) || (r != r2) || (r != r2a))
-            cout << "ERROR5" << endl;
-    }
-
+    vector<int> A = {1,5,2,-2};
+    cout << "Result: " << solution(A) << endl;
+    cout << "Second solution: " << endl;
+    cout << "Result: " << solution2(A) << endl;
+    cout << "Third solution: " << endl;
+    cout << "Result: " << solution3(A) << endl;
+    cout << "Fourth solution: " << endl;
+    cout << "Result: " << solution4(A) << endl;
     return 0;
 }

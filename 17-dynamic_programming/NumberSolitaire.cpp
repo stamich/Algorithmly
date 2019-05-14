@@ -1,6 +1,7 @@
 //
 // Created by michal on 05.05.19.
 //
+// In a given array, find the subset of maximal sum in which the distance between consecutive elements is at most 6.
 #include <iostream>
 #include <vector>
 #include <map>
@@ -83,58 +84,11 @@ int solution2(vector<int> &A){
 
 int main(void){
 
-    { // 0
-        int a[] = {1, -2};
-        vector<int> A(a, a + sizeof(a) / sizeof(a[0]));
-        int r = solution(A);
-        cout << r << endl;
-        if(r != (-1))
-            cout << "ERROR0" << endl;
-    }
+    vector<int> A = {1,-2,0,9,0,-1,-2};
 
-    { // 1
-        int a[] = {1, -2, 0, 9, -1, -2};
-        vector<int> A(a, a + sizeof(a) / sizeof(a[0]));
-        int r = solution(A);
-        cout << r << endl;
-        if(r != 8)
-            cout << "ERROR1" << endl;
-    }
+    cout << "The maximal result that can be achieved on the board represented by array A: " << solution(A) << endl;
+    cout << "Second solution: " << endl;
+    cout << "The maximal result that can be achieved on the board represented by array A: " << solution(A) << endl;
 
-    { // 2
-        int a[] = {1, -1, -2};
-        vector<int> A(a, a + sizeof(a) / sizeof(a[0]));
-        int r = solution(A);
-        cout << r << endl;
-        if(r != (-1))
-            cout << "ERROR2" << endl;
-    }
-
-    { // 3
-        int a[] = {1, 1, -2};
-        vector<int> A(a, a + sizeof(a) / sizeof(a[0]));
-        int r = solution(A);
-        cout << r << endl;
-        if(r != 0)
-            cout << "ERROR3" << endl;
-    }
-
-    { // 4
-        int a[] = {-3, -4, 7, 9, -1, 1};
-        vector<int> A(a, a + sizeof(a) / sizeof(a[0]));
-        int r = solution(A);
-        cout << r << endl;
-        if(r != 14)
-            cout << "ERROR4" << endl;
-    }
-
-    { // 5
-        int a[] = {2, 0, -1, -5, 8, -2};
-        vector<int> A(a, a + sizeof(a) / sizeof(a[0]));
-        int r = solution(A);
-        cout << r << endl;
-        if(r != 8)
-            cout << "ERROR5" << endl;
-    }
     return 0;
 }
