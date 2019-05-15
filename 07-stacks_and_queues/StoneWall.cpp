@@ -52,6 +52,7 @@ int main(){
     vector<int> H = {8,8,5,7,9,8,7,4,8};
 
     cout << "Minimum number of blocks: " << solution(H) << endl;
+    cout << "Second solution: " << endl;
     cout << "Minimum number of blocks: " << solution2(H) << endl;
 
     return 0;

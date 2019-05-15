@@ -37,6 +37,7 @@ int solution2(vector<int> &A) {
 int main(){
     vector<int> A = {9,3,9,3,9,7,9};
     cout << "Unpaired element of array: " << "is: " << solution(A) << endl;
+    cout << "Second solution: " << endl;
     cout << "Unpaired element of array: " << "is: " << solution2(A) << endl;
     return 0;
 }

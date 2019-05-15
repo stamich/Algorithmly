@@ -102,5 +102,22 @@ int main(){
         cout << item << " ";
     }
     cout << endl;
+    cout << "Second solution: " << endl;
+
+    auto result2 = solution2(N, A);
+    cout << "Sequence of integers representing the values of the counters: ";
+    for (auto const& item: result2){
+        cout << item << " ";
+    }
+    cout << endl;
+    cout << "Third solution: " << endl;
+
+    auto result3 = solution3(N, A);
+    cout << "Sequence of integers representing the values of the counters: ";
+    for (auto const& item: result3){
+        cout << item << " ";
+    }
+    cout << endl;
+
     return 0;
 }

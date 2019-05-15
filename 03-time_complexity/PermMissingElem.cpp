@@ -53,7 +53,9 @@ int solution3(vector<int> &A) {
 int main(){
     vector<int> A = {2,3,1,5};
     cout << "The missing element is: " << solution(A) << endl;
+    cout << "Second solution: " << endl;
     cout << "The missing element is: " << solution2(A) << endl;
+    cout << "Third solution: " << endl;
     cout << "The missing element is: " << solution3(A) << endl;
     return 0;
 }

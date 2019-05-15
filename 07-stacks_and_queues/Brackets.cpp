@@ -85,8 +85,9 @@ int main(){
     } else {
         cout << "String is not nested." << endl;
     }
+    cout << "Second solution: " << endl;
 
-    if (solution(S1)){
+    if (solution2(S0)){
         cout << "String nested properly." << endl;
     } else {
         cout << "String is not nested." << endl;

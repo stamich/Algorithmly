@@ -172,5 +172,7 @@ int main(void) {
 
     vector<int> A = {0,0,0,1,1,0,1,0,0,0,0};
     cout << "The minimum number of jumps by which the frog can get to the other side of the river: " << solution(A) << endl;
+    cout << "Second solution: " << endl;
+    cout << "The minimum number of jumps by which the frog can get to the other side of the river: " << solution2(A) << endl;
     return 0;
 }

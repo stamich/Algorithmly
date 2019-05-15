@@ -58,6 +58,7 @@ int main(){
     vector<int> A = {3,1,2,4,3};
 
     cout << "The minimal difference that can be achieved is: " << solution(A) << endl;
+    cout << "Second solution: " << endl;
     cout << "The minimal difference that can be achieved is: " << solution2(A) << endl;
     return 0;
 }

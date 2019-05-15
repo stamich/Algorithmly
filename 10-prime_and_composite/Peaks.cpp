@@ -177,6 +177,7 @@ int solution3(vector<int> &A){
 int main(){
     vector<int> A = {1,2,3,4,3,4,1,2,3,4,6,2};
     cout << "Peak(s): " << solution(A) << endl;
+    cout << "Second solution: " << endl;
     cout << "Peak(s): " << solution2(A) << endl;
     return 0;
 }

@@ -63,6 +63,14 @@ int main(){
         cout << item << " ";
     }
     cout << endl;
+    cout << "Second solution: " << endl;
 
+    auto result2 = solution2(A, K);
+
+    cout << "Rotated array: ";
+    for (auto const& item: result2){
+        cout << item << " ";
+    }
+    cout << endl;
     return 0;
 }

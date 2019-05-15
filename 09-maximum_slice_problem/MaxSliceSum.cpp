@@ -66,6 +66,7 @@ int main(){
 
     vector<int> A = {3,2,-6,4,0};
     cout << "Maximum sum of elements: " << solution(A) << endl;
+    cout << "Second solution: " << endl;
     cout << "Maximum sum of elements: " << solution2(A) << endl;
     return 0;
 }

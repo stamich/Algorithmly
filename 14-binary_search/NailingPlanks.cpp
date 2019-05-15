@@ -191,6 +191,8 @@ bool nails_enough(int j, vector<int> &A, vector<int> &B, vector<int> &C)
 ////////////////////////////////////////////////////////////////////////////////
 
 int main(void) {
+
+    //cout << "Second solution: " << endl;
     { // 1
         int a[] = {1, 4, 5, 8};
         int b[] = {4, 5, 9, 10};

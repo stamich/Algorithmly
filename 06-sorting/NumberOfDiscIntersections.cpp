@@ -79,6 +79,7 @@ int main(){
     } else {
         cout << "The number of intersecting pairs exceeds 10,000,000." << endl;
     }
+    cout << "Second solution: " << endl;
 
     if (solution2(A) >= 0){
         cout << " the number of (unordered) pairs of intersecting discs: " << solution(A) << endl;
