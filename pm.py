@@ -35,16 +35,16 @@ def run(cpp_file, exe_file):
     os.system("echo -------------------")
     os.system(exe_file)
 
-def directories():
-    path = "/algorithmly/"
-    access_rights = 0o755
-    try:
-        os.mkdir(path)
-        os.mkdir(path, access_rights)
-    except OSError:
-        print("Creation of the directory %s failed" % path)
-    else:
-        print("Successfully created the directory %s " % path)
+# def directories():
+#     path = "/algorithmly/"
+#     access_rights = 0o755
+#     try:
+#         os.mkdir(path)
+#         os.mkdir(path, access_rights)
+#     except OSError:
+#         print("Creation of the directory %s failed" % path)
+#     else:
+#         print("Successfully created the directory %s " % path)
 
 if __name__=='__main__':
     main(sys.argv[1:])
