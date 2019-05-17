@@ -46,5 +46,17 @@ def run(cpp_file, exe_file):
 #     else:
 #         print("Successfully created the directory %s " % path)
 
-if __name__=='__main__':
+
+def fileCreator():
+
+    f = open(".gitignore", "w+")
+    for i in range(1):
+        f.write("cmake-build-debug/**\n")
+        f.write(".idea/**\n")
+        f.write("\n")
+        f.write("*.iml")
+    f.close()
+
+
+if __name__ == '__main__':
     main(sys.argv[1:])
