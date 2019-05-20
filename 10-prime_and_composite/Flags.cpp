@@ -1,5 +1,5 @@
 //
-// Created by michal on 05.05.19.
+// Created by michal on 25.04.19.
 //
 // Find the maximum number of flags that can be set on mountain peaks.
 #include <iostream>

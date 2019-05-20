@@ -1,5 +1,5 @@
 //
-// Created by michal on 05.05.19.
+// Created by michal on 25.04.19.
 //
 // Divide an array into the maximum number of same-sized blocks,
 // each of which should contain an index P such that A[P - 1] < A[P] > A[P + 1].
