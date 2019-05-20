@@ -44,6 +44,7 @@ int main(void){
 
     int N = 24;
     cout << "Number of factors of " << N << " is: " << solution(N) << endl;
+    cout << "Second solution: " << endl;
     cout << "Number of factors of " << N << " is: " << solution2(N) << endl;
     return 0;
 }

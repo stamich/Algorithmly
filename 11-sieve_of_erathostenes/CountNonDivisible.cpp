@@ -96,5 +96,14 @@ int main(void){
     }
     cout << endl;
 
+    cout << "Second solution: " << endl;
+    
+    auto result2 = solution2(A);
+
+    cout << "Sequence of integers representing the amount of non-divisors: ";
+    for (auto const& item: result2){
+        cout << item << " ";
+    }
+    cout << endl;
     return 0;
 }

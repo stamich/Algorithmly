@@ -39,6 +39,7 @@ int solution2(vector<int> &A) {
 int main(){
     vector<int> A = {-3,1,2,-2,5,6};
     cout << "Maximum: " << solution(A) << endl;
+    cout << "Second solution: " << endl;
     cout << "Maximum: " << solution2(A) << endl;
     return 0;
 }

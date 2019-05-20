@@ -84,6 +84,7 @@ int solution2(vector<int> &A) {
 int main(void) {
     vector<int> A = {3,2,6,-1,4,5,-1,2};
     cout <<  "Maximal sum of double slice is: " << solution(A) << endl;
+    cout << "Second solution: " << endl;
     cout <<  "Maximal sum of double slice is: " << solution2(A) << endl;
 
     return 0;

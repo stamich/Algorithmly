@@ -45,6 +45,7 @@ int main(){
     } else {
         cout << "Triplet for array: " << " not exists." << endl;
     }
+    cout << "Second solution: " << endl;
 
     if (solution2(A)){
         cout << "Triplet for array: " << " exists." << endl;

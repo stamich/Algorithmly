@@ -63,6 +63,7 @@ int main(){
 
     vector<int> A = {23171,21011,21123,21366,21013,21367};
     cout << "Maximum possible profit from the transaction is: " << solution(A) << endl;
+    cout << "Second solution: " << endl;
     cout << "Maximum possible profit from the transaction is: " << solution2(A) << endl;
     return 0;
 }

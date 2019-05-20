@@ -75,7 +75,9 @@ int main(){
     vector<int> A = {1,3,1,4,2,3,5,4};
 
     cout << "The earliest time when the frog can jump is: " << solution(X, A) << endl;
+    cout << "Second solution: " << endl;
     cout << "The earliest time when the frog can jump is: " << solution2(X, A) << endl;
+    cout << "Third solution: " << endl;
     cout << "The earliest time when the frog can jump is: " << solution3(X, A) << endl;
 
     return 0;

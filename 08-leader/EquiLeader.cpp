@@ -107,6 +107,7 @@ int main(){
     vector<int> A = {4,3,4,4,4,2};
 
     cout << "The equi leader of given array is: " << solution(A) << endl;
+    cout << "Second solution: " << endl;
     cout << "The equi leader of given array is: " << solution2(A) << endl;
     return 0;
 }

@@ -71,7 +71,9 @@ int solution3(vector<int> &A) {
 int main(){
     vector<int> A = {0,1,0,1,1};
     cout << "Number of Passes (solution 1): " << solution(A) << endl;
+    cout << "Second solution: " << endl;
     cout << "Number of Passes (solution 2): " << solution2(A) << endl;
+    cout << "Third solution: " << endl;
     cout << "Number of Passes (solution 3): " << solution3(A) << endl;
     return 0;
 }

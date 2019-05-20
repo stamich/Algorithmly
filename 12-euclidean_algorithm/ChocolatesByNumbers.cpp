@@ -43,5 +43,6 @@ int main(void){
     int N = 10;
     int M = 4;
     cout << "Number of chocolates: " << solution(N, M) << endl;
+    cout << "Second solution: " << endl;
     return 0;
 }

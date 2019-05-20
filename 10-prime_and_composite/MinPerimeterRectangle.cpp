@@ -45,6 +45,7 @@ int main(void){
 
     int N = 30;
     cout << "The minimal perimeter is: " << solution(N) << endl;
+    cout << "Second solution: " << endl;
     cout << "The minimal perimeter is: " << solution2(N) << endl;
     return 0;
 }

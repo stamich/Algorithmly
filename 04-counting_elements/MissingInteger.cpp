@@ -68,6 +68,7 @@ int main(){
     vector<int> A = {4,1,3,2};
 
     cout << "The smallest positive integer (greater than 0) that does not occur in array is: " << solution(A) << endl;
+    cout << "Second solution: " << endl;
     cout << "The smallest positive integer (greater than 0) that does not occur in array is: " << solution2(A) << endl;
     return 0;
 }

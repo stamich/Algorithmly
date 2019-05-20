@@ -75,6 +75,7 @@ int main(){
     vector<int> B = {0,1,0,0,0};
 
     cout << solution(A, B) << " fish will stay alive." << endl;
+    cout << "Second solution: " << endl;
     cout << solution2(A, B) << " fish will stay alive." << endl;
 
     return 0;

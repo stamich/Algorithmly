@@ -63,6 +63,7 @@ int main() {
 
     for (int i = 0; i < arr.size() ; i++) {
         cout << "The longest sequence of zeros for value: " << arr[i] << " is: " << solution(arr[i]) << endl;
+        cout << "Second solution: " << endl;
         cout << "The longest sequence of zeros for value: " << arr[i] << " is: " << solution2(arr[i]) << endl;
     }
     return 0;

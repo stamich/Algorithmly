@@ -77,6 +77,7 @@ int solution2(vector<int> &A) {
 int main(void) {
     vector<int> A = {1, 5, 3, 4, 3, 4, 1, 2, 3, 4, 6, 2};
     cout << "Flags: " << solution(A) << endl;
+    cout << "Second solution: " << endl;
     cout << "Flags: " << solution2(A) << endl;
     return 0;
 }

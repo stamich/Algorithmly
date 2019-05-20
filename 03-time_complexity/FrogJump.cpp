@@ -24,6 +24,7 @@ int main(){
     vector<int> arr {10, 85, 30};
 
     cout << "Frog needs: " << solution(X, Y, D) << " jumps." << endl;
+    cout << "Second solution: " << endl;
     cout << "Frog needs: " << solution2(arr[0], arr[1], arr[2]) << " jumps." << endl;
     return 0;
 }

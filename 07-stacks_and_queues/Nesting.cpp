@@ -82,6 +82,12 @@ int main(){
     } else {
         cout << "String: " << s1 << " is not properly nested." << endl;
     }
+    cout << "Second solution: " << endl;
+    if (solution2(s1)){
+        cout << "String: " << s1 << " is properly nested." << endl;
+    } else {
+        cout << "String: " << s1 << " is not properly nested." << endl;
+    }
 
     return 0;
 }

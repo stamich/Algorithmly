@@ -30,6 +30,7 @@ int main(){
     cout << solution(6,11,3) << endl;
     cout << solution(6,11,4) << endl;
 
+    cout << "Second solution: " << endl;
     cout << solution2(6,11,1) << endl;
     cout << solution2(6,11,2) << endl;
     cout << solution2(6,11,3) << endl;

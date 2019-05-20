@@ -64,6 +64,7 @@ int main(){
 
     vector<int> A = {3,4,3,2,3,-1,3,3};
     cout << "The dominator is: " << solution(A)  << " and his value is: " << A[solution(A)] << endl;
+    cout << "Second solution: " << endl;
     cout << "The dominator is: " << solution2(A)  << " and his value is: " << A[solution2(A)] << endl;
     return 0;
 }
